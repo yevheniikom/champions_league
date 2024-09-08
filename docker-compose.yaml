@@ -1,0 +1,15 @@
+services:
+  php-apache:
+    build:
+      context: docker/php
+    container_name: champions_league
+    environment:
+      HISTFILE: /root/history/.history
+    volumes:
+      - .:/var/www/html
+      - php_history:/root/history
+    ports:
+      - "8084:80"
+
+volumes:
+  php_history: ~
