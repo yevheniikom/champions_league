@@ -1,4 +1,6 @@
 # Premier League (Tournament) Simulator
+[![Psalm Level](https://shepherd.dev/github/yevheniikom/champions_league/level.svg)](https://shepherd.dev/github/yevheniikom/champions_league)
+[![Psalm Type Coverage](https://shepherd.dev/github/yevheniikom/champions_league/coverage.svg)](https://shepherd.dev/github/yevheniikom/champions_league)
 
 ## License
 
