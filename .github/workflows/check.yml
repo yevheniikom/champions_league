@@ -1,0 +1,39 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Psalm Security Scan
+
+on:
+  pull_request: ~
+  push:
+    branches: ['main']
+
+permissions:
+  contents: read
+
+jobs:
+  psalm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+      - run: vendor/bin/psalm.phar --shepherd --show-info --no-diff --no-cache --output-format=github
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        with:
+          php_extensions: "xdebug"
+          coverage_clover: "coverage/clover.xml"
