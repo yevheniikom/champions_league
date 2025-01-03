@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Psalm Security Scan
+name: Code checks
 
 on:
   pull_request: ~
@@ -22,6 +22,9 @@ jobs:
         with:
           php-version: 8.3
           tools: composer:v2
+      - uses: ramsey/composer-install@v3
+        with:
+          composer-options: --optimize-autoloader
       - run: vendor/bin/psalm.phar --shepherd --show-info --no-diff --no-cache --output-format=github
 
   unit-tests:
@@ -32,6 +35,9 @@ jobs:
         with:
           php-version: 8.3
           tools: composer:v2
+      - uses: ramsey/composer-install@v3
+        with:
+          composer-options: --optimize-autoloader
       - name: PHPUnit tests
         uses: php-actions/phpunit@v3
         with:
