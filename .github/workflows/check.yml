@@ -38,8 +38,4 @@ jobs:
       - uses: ramsey/composer-install@v3
         with:
           composer-options: --optimize-autoloader
-      - name: PHPUnit tests
-        uses: php-actions/phpunit@v3
-        with:
-          php_extensions: "xdebug"
-          coverage_clover: "coverage/clover.xml"
+      - run: vendor/bin/phpunit
